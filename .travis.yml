@@ -18,3 +18,15 @@ after_success:
   - docker push randyb11595/multi-nginx
   - docker push randyb11595/multi-server
   - docker push randyb11595/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "react-app"
+  env: "React-app-env"
+  bucket_name: "elasticbeanstalk-us-east-2-326509730982"
+  bucket_path: "react-app"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secrete_access_key: "$AWS_SECRET_KEY"
